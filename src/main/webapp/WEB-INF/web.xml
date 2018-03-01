@@ -44,7 +44,7 @@
     <description>spring监听器</description>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
-
+<!--springmvc servlet-->
   <servlet>
     <description>spring mvc servlet</description>
     <servlet-name>springMvc</servlet-name>
@@ -60,4 +60,20 @@
     <servlet-name>springMvc</servlet-name>
     <url-pattern>*.shtml</url-pattern>
   </servlet-mapping>
+
+  <welcome-file-list>
+    <welcome-file>/user/demo.shtml</welcome-file>
+  </welcome-file-list>
+  <error-page>
+    <error-code>404</error-code>
+    <location>/common/404.shtml</location>
+  </error-page>
+  <error-page>
+    <error-code>500</error-code>
+    <location>/common/500.shtml</location>
+  </error-page>
+  <!-- 配置session超时时间，单位分钟 -->
+  <session-config>
+    <session-timeout>900</session-timeout>
+  </session-config>
 </web-app>
