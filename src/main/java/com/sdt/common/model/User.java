@@ -24,7 +24,7 @@ public class User implements Serializable{
 
     private Date lastLoginTime;
 
-    private Long status;
+    private String status;
 
     public Long getId() {
         return id;
@@ -74,11 +74,11 @@ public class User implements Serializable{
         this.lastLoginTime = lastLoginTime;
     }
 
-    public Long getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Long status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

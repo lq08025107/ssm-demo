@@ -12,12 +12,13 @@
     </typeAliases>
 
     <!--
-    <mappers>
-       <mapper resource="mapper/StudentMapper.xml"/>
-    </mappers>
-       <plugins>
-          <plugin interceptor="net.wenyifan.common.mybatis.plugin.PageInterceptor">
-          </plugin>
-       </plugins>
-   -->
+        <mappers>
+           <mapper resource="com/sdt/common/mapper/*.xml"/>
+        </mappers>
+
+           <plugins>
+              <plugin interceptor="net.wenyifan.common.mybatis.plugin.PageInterceptor">
+              </plugin>
+           </plugins>
+       -->
 </configuration>

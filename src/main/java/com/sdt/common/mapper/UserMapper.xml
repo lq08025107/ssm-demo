@@ -5,12 +5,52 @@
         <id column="id" property="id" jdbcType="BIGINT" />
         <result column="nickname" property="nickname" jdbcType="VARCHAR" />
         <result column="email" property="email" jdbcType="VARCHAR" />
-        <result column="pswd" property="pswd" jdbcType="VARCHAR" />
+        <result column="paswd" property="pswd" jdbcType="VARCHAR" />
         <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
         <result column="last_login_time" property="lastLoginTime" jdbcType="TIMESTAMP" />
         <result column="status" property="status" jdbcType="VARCHAR" />
     </resultMap>
-    <sql id="Base_Column_list">
-        id, nickname, email, pswd, create_time, last_login_time, status
+    <sql id="Base_Column_List">
+        id, nickname, email, paswd, create_time, last_login_time, status
     </sql>
+
+    <!-- 根据邮箱|帐号查询 -->
+    <select id="findUserByEmail" resultMap="BaseResultMap" >
+        select
+        <include refid="Base_Column_List" />
+        from user
+        where email = #{email,jdbcType=VARCHAR}
+    </select>
+
+    <!-- 登陆 -->
+    <select id="login" resultMap="BaseResultMap" >
+        select
+        <include refid="Base_Column_List" />
+        from user
+        where email = #{email, jdbcType=VARCHAR} and paswd = #{pswd, jdbcType=VARCHAR}
+    </select>
+
+    <update id="updateByPrimarykeySelective" parameterType="com.sdt.common.model.User" >
+        update user
+        <set>
+            <if test="nickname != null" >
+                nickname = #{nickname, jdbcType = VARCHAR},
+            </if>
+            <if test="email != null" >
+                email = #{email, jdbcType = VARCHAR},
+            </if>
+            <if test="paswd != null" >
+                paswd = #{pswd, jdbcType = VARCHAR},
+            </if>
+            <if test="createTime != null" >
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastLoginTime != null" >
+                last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="status != null" >
+                status = #{status,jdbcType=VARCHAR},
+            </if>
+        </set>
+    </update>
 </mapper>

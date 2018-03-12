@@ -21,6 +21,9 @@
 
     <mvc:annotation-driven />
 
+    <!-- 为了使用springContextUtil获取bean-->
+    <bean name="springContextUtil" class="com.sdt.common.utils.SpringContextUtil" scope="singleton"></bean>
+
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
         <property name="messageConverters">
             <list>
@@ -121,10 +124,10 @@
                 <!--			<prop key="number_format">0.######</prop>-->
                 <prop key="number_format">#</prop>
                 <prop key="whitespace_stripping">true</prop>
-                <!--<prop key="auto_import">
+                <prop key="auto_import">
                     /common/config/top.ftl as _top,
                     /common/config/left.ftl as _left
-                </prop>-->
+                </prop>
 
             </props>
         </property>
